@@ -5,3 +5,7 @@
 ## 1.0.1
 
 - Added example
+
+## 1.0.2
+
+- Changed CHANGELOG.md
