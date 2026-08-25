@@ -26,15 +26,24 @@ void main() {
     });
 
     test('common prefix', () {
-      expect(gestaltSimilarity('hello', 'hello world'), closeTo(10 / 16, 1e-12));
+      expect(
+        gestaltSimilarity('hello', 'hello world'),
+        closeTo(10 / 16, 1e-12),
+      );
     });
 
     test('common suffix', () {
-      expect(gestaltSimilarity('hello world', 'world'), closeTo(10 / 16, 1e-12));
+      expect(
+        gestaltSimilarity('hello world', 'world'),
+        closeTo(10 / 16, 1e-12),
+      );
     });
 
     test('multiple matching regions', () {
-      expect(gestaltSimilarity('abc123xyz', 'abc456xyz'), closeTo(12 / 18, 1e-12));
+      expect(
+        gestaltSimilarity('abc123xyz', 'abc456xyz'),
+        closeTo(12 / 18, 1e-12),
+      );
     });
 
     test('reordered strings', () {
@@ -62,17 +71,27 @@ void main() {
       final fr2 = 'ʒənəsɥispasynetydjɑ̃tdəʃinʒəsɥisʒapɔnɛ';
       expect(gestaltSimilarity(fr1, fr2), closeTo(0.821917808219178, 1e-12));
 
-      final wrongOne1 = 'konojijeniwanaːnigaanunpreskakinomiseniitekatosasutemoratta';
+      final wrongOne1 =
+          'konojijeniwanaːnigaanunpreskakinomiseniitekatosasutemoratta';
       final wrongOne2 = 'ʒənəsɥispasynetydjɑ̃tdəʃinʒəsɥisʒapɔnɛ';
-      expect(gestaltSimilarity(wrongOne1, wrongOne2), closeTo(0.14432989690721648, 1e-12));
+      expect(
+        gestaltSimilarity(wrongOne1, wrongOne2),
+        closeTo(0.14432989690721648, 1e-12),
+      );
 
-      final wrongTwo1 = 'ʈʂɤkɤfɑŋtɕjɛnnimjɛnyoʊijɑŋtswɔtsatswɔtsɤsanmjɛnyoʊipeɪʂweɪ';
+      final wrongTwo1 =
+          'ʈʂɤkɤfɑŋtɕjɛnnimjɛnyoʊijɑŋtswɔtsatswɔtsɤsanmjɛnyoʊipeɪʂweɪ';
       final wrongTwo2 = 'ʒənəsɥispasynetydjɑ̃tdəʃinʒəsɥisʒapɔnɛ';
       expect(gestaltSimilarity(wrongTwo1, wrongTwo2), closeTo(0.1875, 1e-12));
     });
 
     test('similarity is symmetric', () {
-      const pairs = [('hello', 'hallo'), ('abcdef', 'abxyz'), ('abc', 'cba'), ('你好世界', '你好朋友')];
+      const pairs = [
+        ('hello', 'hallo'),
+        ('abcdef', 'abxyz'),
+        ('abc', 'cba'),
+        ('你好世界', '你好朋友'),
+      ];
 
       for (final (a, b) in pairs) {
         expect(gestaltSimilarity(a, b), equals(gestaltSimilarity(b, a)));
@@ -80,7 +99,13 @@ void main() {
     });
 
     test('result is between 0 and 1', () {
-      const pairs = [('hello', 'world'), ('abc', 'abcdef'), ('foo bar', 'bar foo'), ('你好', '世界'), ('', '')];
+      const pairs = [
+        ('hello', 'world'),
+        ('abc', 'abcdef'),
+        ('foo bar', 'bar foo'),
+        ('你好', '世界'),
+        ('', ''),
+      ];
 
       for (final (a, b) in pairs) {
         final result = gestaltSimilarity(a, b);

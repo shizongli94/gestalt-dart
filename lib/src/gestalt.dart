@@ -37,7 +37,14 @@ double gestaltSimilarity(String a, String b) {
   return 2.0 * matches / (a.length + b.length);
 }
 
-int _countMatches(String a, int aStart, int aEnd, String b, int bStart, int bEnd) {
+int _countMatches(
+  String a,
+  int aStart,
+  int aEnd,
+  String b,
+  int bStart,
+  int bEnd,
+) {
   final match = _findLongestMatch(a, aStart, aEnd, b, bStart, bEnd);
 
   if (match.length == 0) {
@@ -46,10 +53,24 @@ int _countMatches(String a, int aStart, int aEnd, String b, int bStart, int bEnd
 
   return match.length +
       _countMatches(a, aStart, match.aStart, b, bStart, match.bStart) +
-      _countMatches(a, match.aStart + match.length, aEnd, b, match.bStart + match.length, bEnd);
+      _countMatches(
+        a,
+        match.aStart + match.length,
+        aEnd,
+        b,
+        match.bStart + match.length,
+        bEnd,
+      );
 }
 
-_Match _findLongestMatch(String a, int aStart, int aEnd, String b, int bStart, int bEnd) {
+_Match _findLongestMatch(
+  String a,
+  int aStart,
+  int aEnd,
+  String b,
+  int bStart,
+  int bEnd,
+) {
   var bestLength = 0;
   var bestAStart = aStart;
   var bestBStart = bStart;
@@ -58,7 +79,9 @@ _Match _findLongestMatch(String a, int aStart, int aEnd, String b, int bStart, i
     for (var j = bStart; j < bEnd; j++) {
       var length = 0;
 
-      while (i + length < aEnd && j + length < bEnd && a.codeUnitAt(i + length) == b.codeUnitAt(j + length)) {
+      while (i + length < aEnd &&
+          j + length < bEnd &&
+          a.codeUnitAt(i + length) == b.codeUnitAt(j + length)) {
         length++;
       }
 
@@ -74,7 +97,11 @@ _Match _findLongestMatch(String a, int aStart, int aEnd, String b, int bStart, i
 }
 
 class _Match {
-  const _Match({required this.aStart, required this.bStart, required this.length});
+  const _Match({
+    required this.aStart,
+    required this.bStart,
+    required this.length,
+  });
 
   final int aStart;
   final int bStart;
