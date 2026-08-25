@@ -1,8 +1,8 @@
 name: gestalt
 description: Simple Gestalt-style string similarity for Dart and Flutter.
 version: 1.0.0
-repository: https://github.com/shizongli94/gestalt
-homepage: https://github.com/shizongli94/gestalt
+repository: https://github.com/shizongli94/gestalt-dart
+homepage: https://github.com/shizongli94/gestalt-dart
 
 environment:
   sdk: ^3.12.2
